@@ -85,6 +85,8 @@ phpunit
 # Composer
 #-------------------------
 vendor/
+composer.json
+composer.lock
 
 #-------------------------
 # IDE / Development Files
@@ -135,3 +137,14 @@ sql/setup.sql
 *.tmp
 /results/
 phpunit*.xml
+phpunit.xml.dist
+preload.php
+spark
+
+# README file
+README.md
+
+composer.json
+composer.lock
+README.md
+
