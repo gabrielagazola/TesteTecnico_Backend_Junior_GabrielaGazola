@@ -122,5 +122,16 @@ nb-configuration.xml
 # Visual Studio Code
 .vscode/
 
+# Backup and Temporary Files
+*.sql
+*.sql.gz
+*.bak
+
+# Database Configuration Files
+sql/setup.sql
+
+# Temporary and log files
+*.log
+*.tmp
 /results/
-/phpunit*.xml
+phpunit*.xml
