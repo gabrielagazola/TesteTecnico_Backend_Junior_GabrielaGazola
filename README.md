@@ -125,23 +125,30 @@ curl -X DELETE http://localhost:8080/posts/1
 
 ---
 
-## Possíveis Erros e Soluções
+## Organização do Desenvolvimento no Scrum 
 
-### 1. Erro: `404 Not Found`
+### **Dia 1 - Configuração do Ambiente e Estrutura Inicial**
+- Instalar dependências.
+- Configurar o ambiente.
+- Criar o banco de dados e definir a tabela `posts` via migração.
+- Configurar o servidor local.
+- Criar um repositório no GitHub.
 
-**Solução:** Verifique se o servidor está rodando (`php spark serve`).
+---
 
-### 2. Erro: `SQLSTATE[HY000] [1045] Access denied for user`
+### **Dia 2 - Implementação dos Endpoints CRUD**
+- Criar `PostModel` para interagir com o banco.  
+- Criar `PostsController` com métodos **index, show, create, update, delete**.  
+- Testar os endpoints usando **Postman ou cURL**.  
+- Implementar tratamento básico de erros.  
 
-**Solução:** Verifique as credenciais no arquivo `.env`.
+---
 
-### 3. Erro: `Class not found`
-
-**Solução:** Rode `composer dump-autoload` e tente novamente.
-
-### 4. Erro: `Table 'minha_api_db.posts' doesn't exist`
-
-**Solução:** Rode `php spark migrate` para criar as tabelas.
+### **Dia 3 - Documentação e Revisão**
+- Criar seeders para popular o banco de dados.  
+- Melhorar tratamento de erros e respostas HTTP.  
+- Finalizar e revisar `README.md` com instruções detalhadas.  
+- Revisar código e realizar últimos ajustes. 
 
 ---
 
