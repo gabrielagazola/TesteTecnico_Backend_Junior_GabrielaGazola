@@ -1,4 +1,4 @@
-# Teste Tecnico - Backend Junior - Construção de API - CodeIgniter 4
+# Teste Técnico - Backend Júnior - Construção de API - CodeIgniter 4
 
 Esta API foi construída utilizando o framework **CodeIgniter 4** e segue o padrão RESTful para a manipulação de postagens. O projeto inclui funcionalidades para **listar**, **criar**, **atualizar** e **excluir** postagens.
 
@@ -6,7 +6,7 @@ Esta API foi construída utilizando o framework **CodeIgniter 4** e segue o padr
 
 - PHP 7.x ou superior
 - CodeIgniter 4
-- MySQL 
+- MySQL
 - Composer (para gerenciar dependências)
 - cURL (para testar a API via terminal)
 
@@ -50,19 +50,34 @@ database.default.username = root
 database.default.password = testetecnico
 ```
 
-### Passo 4: Executar Migrações
+### Passo 4: Construção do Banco de Dados
+
+#### Migrações
+As tabelas do banco de dados são criadas usando migrações do CodeIgniter 4. As migrações garantem que a estrutura do banco esteja sempre atualizada e podem ser executadas com:
 
 ```bash
 php spark migrate
 ```
 
-### Passo 5: Executar Seeders
+Isso criará a tabela `posts` com os seguintes campos:
+
+- **id**: Chave primária, auto-incremento.
+- **title**: Título do post (VARCHAR 255).
+- **content**: Conteúdo do post (TEXT).
+- **created_at** e **updated_at**: Campos de timestamp gerenciados automaticamente.
+
+A migração correspondente pode ser encontrada em `app/Database/Migrations/XXXX_XX_XX_CreatePostsTable.php`.
+
+#### Seeders
+Para popular o banco de dados com dados iniciais, execute o seeder:
 
 ```bash
 php spark db:seed PostSeeder
 ```
 
-### Passo 6: Iniciar o Servidor
+Isso adicionará alguns posts de exemplo na tabela `posts`.
+
+### Passo 5: Iniciar o Servidor
 
 ```bash
 php spark serve
@@ -71,7 +86,6 @@ php spark serve
 A API estará acessível em `http://localhost:8080/posts`.
 
 ---
-
 
 ## Endpoints da API
 
@@ -129,11 +143,9 @@ curl -X DELETE http://localhost:8080/posts/1
 
 **Solução:** Rode `php spark migrate` para criar as tabelas.
 
-
-
 ---
 
 ### Autor
 
-Desenvolvido por **Gabriela Machado Gazola**. 
+Desenvolvido por **Gabriela Machado Gazola**.
 
