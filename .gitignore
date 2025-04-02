@@ -139,7 +139,6 @@ nb-configuration.xml
 phpunit*.xml
 phpunit.xml.dist
 preload.php
-spark
 
 # README file
 README.md

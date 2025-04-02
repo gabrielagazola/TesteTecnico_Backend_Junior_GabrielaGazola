@@ -16,6 +16,10 @@ class PostSeeder extends Seeder
             [
                 'title'   => 'Segundo Post',
                 'content' => 'Conteúdo do segundo post.'
+            ],
+            [
+                'title'   => 'Terceito Post',
+                'content' => 'Conteúdo do terceiro post.'
             ]
         ];
 
