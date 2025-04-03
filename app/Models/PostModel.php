@@ -36,13 +36,13 @@ class PostModel extends Model
     // Mensagens de erro para validação
     protected $validationMessages = [
         'title'   => [
-            'required'   => 'O título é obrigatório.',
-            'min_length' => 'O título deve ter pelo menos 3 caracteres.',
-            'max_length' => 'O título não pode ter mais que 255 caracteres.'
+            'required'   => 'O titulo e obrigatorio.',
+            'min_length' => 'O titulo deve ter pelo menos 3 caracteres.',
+            'max_length' => 'O titulo não pode ter mais que 255 caracteres.'
         ],
         'content' => [
-            'required'   => 'O conteúdo é obrigatório.',
-            'min_length' => 'O conteúdo deve ter pelo menos 5 caracteres.'
+            'required'   => 'O conteudo e obrigatorio.',
+            'min_length' => 'O conteudo deve ter pelo menos 5 caracteres.'
         ]
     ];
     
@@ -72,5 +72,10 @@ class PostModel extends Model
     {
         $data['data']['updated_at'] = date('Y-m-d H:i:s'); // Atualiza o timestamp
         return $data;
+    }
+
+    public function getValidationErrors()
+    {
+        return $this->errors();
     }
 }

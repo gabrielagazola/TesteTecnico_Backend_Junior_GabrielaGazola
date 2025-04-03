@@ -49,7 +49,18 @@ class PostRepository
      */
     public function create($data)
     {
-        return $this->postModel->insert($data);
+        $postModel = new \App\Models\PostModel();
+
+        if (!$postModel->insert($data)) {
+            
+            $errors = $postModel->errors();
+            log_message('error', 'Erro de validação ao criar post: ' . json_encode($errors));
+
+            // Lança uma exceção para que o PostService capture
+            throw new \Exception(json_encode($errors), 400);
+        }
+
+        return $postModel->insertID();
     }
 
     /**
@@ -59,10 +70,23 @@ class PostRepository
      * @param array 
      * @return bool Retorna true se a atualização for bem-sucedida, false caso contrário
      */
+   
     public function update($id, $data)
     {
-        return $this->postModel->update($id, $data);
+        $postModel = new \App\Models\PostModel();
+
+        if (!$postModel->update($id, $data)) {
+            
+            $errors = $postModel->errors();
+            log_message('error', 'Erro de validação ao atualizar post: ' . json_encode($errors));
+
+            // Lança uma exceção para que o PostService capture
+            throw new \Exception(json_encode($errors), 400);
+        }
+
+        return true;
     }
+
 
     /**
      * Exclui um post do banco de dados pelo ID.

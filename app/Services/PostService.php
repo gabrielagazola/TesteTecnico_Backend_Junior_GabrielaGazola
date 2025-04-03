@@ -50,12 +50,21 @@ class PostService
      * @return int 
      * @throws \Exception Se os dados forem inválidos
      */
+    
+   
     public function createPost($data)
     {
-        if (empty($data['title']) || empty($data['content'])) {
-            throw new \Exception("Título e conteúdo são obrigatórios", 400);
+        $postModel = new \App\Models\PostModel();
+
+        if (!$postModel->insert($data)) {
+            $errors = $postModel->errors();
+            log_message('error', 'Erro de validação ao criar post: ' . json_encode($errors));
+
+            // Retorna os erros de validação corretamente como JSON
+            throw new \Exception(json_encode(['messages' => $errors]), 400);
         }
-        return $this->postRepository->create($data);
+
+        return $postModel->insertID();
     }
 
     /**

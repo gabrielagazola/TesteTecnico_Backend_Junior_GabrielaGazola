@@ -31,6 +31,7 @@ class PostController extends ResourceController
     }
 
     // 3. Criar um novo post (POST /posts)
+
     public function create()
     {
         try {
@@ -40,9 +41,11 @@ class PostController extends ResourceController
                 'data' => $this->postService->createPost($data)
             ]);
         } catch (\Exception $e) {
-            return $this->failValidationErrors($e->getMessage());
+            // Decodifica a mensagem de erro para garantir que seja um JSON válido
+            return $this->fail(json_decode($e->getMessage(), true), 400);
         }
     }
+
 
     // 4. Atualizar um post (PUT /posts/{id})
     public function update($id = null)
