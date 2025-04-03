@@ -61,7 +61,11 @@ class PostService
             log_message('error', 'Erro de validação ao criar post: ' . json_encode($errors));
 
             // Retorna os erros de validação corretamente como JSON
-            throw new \Exception(json_encode(['messages' => $errors]), 400);
+            throw new \Exception(json_encode([
+                'error' => 400,
+                'messages' => $errors
+            ]));
+
         }
 
         return $postModel->insertID();
